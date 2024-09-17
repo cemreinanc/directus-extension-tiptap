@@ -15,8 +15,6 @@ import task from "./extensions/task";
 import table from "./extensions/table";
 import icons from "./icons";
 import { useImage } from "./composables/image";
-import uniqueId from "./extensions/unique-id";
-import emoji from "./extensions/emoji";
 
 const { t } = useI18n({ messages });
 
@@ -39,9 +37,6 @@ const props = withDefaults(defineProps<Props>(), {
   focusMode: () => focus.defaults.mode,
   taskItemNested: () => task.defaults.nested,
   tableResizable: () => table.defaults.resizable,
-  emojiEnableEmoticons: () => emoji.defaults.enableEmoticons,
-  uniqueIdAttributeName: () => uniqueId.defaults.attributeName,
-  uniqueIdTypes: () => uniqueId.defaults.types,
 });
 
 const emit = defineEmits<{
@@ -135,14 +130,6 @@ watch(
   () => props.disabled,
   (disabled) => editor.setEditable(!disabled),
 );
-
-const emojiSelected = async (emoji: string) => {
-  const { emojiToShortcode } = await import("@tiptap-pro/extension-emoji");
-  const shortcode = emojiToShortcode(emoji, editor.storage.emoji.emojis);
-  if (shortcode) {
-    editor.chain().focus().setEmoji(shortcode).run();
-  }
-};
 
 onBeforeUnmount(() => {
   editor.destroy();
@@ -499,17 +486,6 @@ onBeforeUnmount(() => {
         <icons.Image />
       </v-button>
 
-      <v-emoji-picker
-        v-if="editorExtensions.includes('emoji')"
-        v-tooltip="t('tiptap.emoji')"
-        :disabled="props.disabled"
-        :x-small="false"
-        :secondary="false"
-        small
-        icon
-        @emoji-selected="emojiSelected"
-      />
-
       <v-menu v-if="editorExtensions.includes('table')" show-arrow placement="bottom-start">
         <template #activator="{ toggle }">
           <v-button
@@ -668,18 +644,6 @@ onBeforeUnmount(() => {
       </v-button>
 
       <v-button
-        v-if="editorExtensions.includes('invisibleCharacters')"
-        v-tooltip="t('tiptap.invisible_characters')"
-        small
-        icon
-        :disabled="props.disabled"
-        :active="editor.storage.invisibleCharacters?.visibility"
-        @click="editor.commands.toggleInvisibleCharacters()"
-      >
-        <icons.InvisibleCharacters />
-      </v-button>
-
-      <v-button
         v-tooltip="t('tiptap.clear_format')"
         small
         icon
@@ -787,7 +751,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
-@import "katex/dist/katex.min.css";
 @import "./styles/mixins/form-grid";
 .v-menu-content {
   svg {
