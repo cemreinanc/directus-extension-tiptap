@@ -1,5 +1,11 @@
 # [1.11.0](https://github.com/cemreinanc/directus-extension-tiptap/compare/v1.10.4...v1.11.0) (2023-08-17)
 
+## 2.0.0
+
+### Major Changes
+
+- [`ad327fd`](https://github.com/cemreinanc/directus-extension-tiptap/commit/ad327fd6dcf87b215e7208d99bfc5d83f1c40dc4) Thanks [@cemreinanc](https://github.com/cemreinanc)! - remove pro extensions, upgrade dependencies
+
 ## 1.17.0
 
 ### Minor Changes
