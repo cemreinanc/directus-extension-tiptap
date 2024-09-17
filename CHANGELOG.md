@@ -1,4 +1,4 @@
-# [1.11.0](https://github.com/gbicou/directus-extension-tiptap/compare/v1.10.4...v1.11.0) (2023-08-17)
+# [1.11.0](https://github.com/cemreinanc/directus-extension-tiptap/compare/v1.10.4...v1.11.0) (2023-08-17)
 
 ## 1.17.0
 

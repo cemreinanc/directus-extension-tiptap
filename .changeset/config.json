@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "gbicou/directus-extension-tiptap" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "cemreinanc/directus-extension-tiptap" }],
   "commit": false,
   "fixed": [],
   "linked": [],
